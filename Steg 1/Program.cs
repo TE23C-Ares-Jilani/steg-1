@@ -94,21 +94,36 @@
 //     }
 // }
 // --------------------------------------------------------------------------------------
+
 Console.WriteLine("welcome to guess ze number!");
-int i = 0;
-while (i == 0)
+Console.WriteLine("the number is bewtween 0 and 9.");
+int number = 20;
+int num = 0;
+while (num != number)
 {
-    int number = 
+    number = Random.Shared.Next(9);
     Console.WriteLine("plz write your guess:");
-    string guess = Console.WriteLine();
-    int num = 0;
-    bool success = guess.All(char.IsDigit);
-    if (success = false)
+    string guess = Console.ReadLine();
+    bool success = int.TryParse(guess,out num);
+    if (success == false)
     {
         Console.WriteLine("please write a number.");
     }
-    else if (success = true)
+    else if (success == true)
     {
-
+        if (num > 9 || num < 0)
+        {
+            Console.WriteLine("please write a number between 0 and 9");
+        }
+        else if (num != number)
+        {
+            Console.WriteLine($"youbguessed wrong. the anser is {number}.");
+        }
+        else if (num == number)
+        {
+            Console.WriteLine("congrats! you guessed right");
+            Console.WriteLine("press enter to exit.");
+        }
     }
 }
+Console.ReadKey();
